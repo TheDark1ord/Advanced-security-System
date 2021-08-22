@@ -1,0 +1,44 @@
+﻿<Window x:Class="Advanced_security_System_C.MainAppWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Advanced_security_System_C"
+        mc:Ignorable="d"
+        Title="Advanced Security System" Height="750" Width="1280"
+        x:Name="MainWindow"
+        Icon="Resource files/ASS.ico"
+        MouseDown="mousePressed"
+        MouseUp="mouseReleased">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Custom_UIElements/Galleries/FolderControlStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/Resources/MainWindowStyles.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Custom_UIElements/Side_Panel_Galleries/SideFolderControl.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <DockPanel x:Name="MainPanel">
+        <!-->Side panel<!-->
+        <Border BorderThickness="2" BorderBrush="Gray" Background="LightGray" Visibility="Hidden" Margin="0, 0, 0, 0">
+            <StackPanel x:Name="SidePanel" Visibility="Collapsed"
+                        Width="345" Style="{StaticResource SidePanelStyle}"
+                        VerticalAlignment="Stretch"
+                        Background="Transparent">
+
+                <local:SideFolderControl Index="0" GalleryNameSide="{Binding ElementName=G0, Path=GalleryName}" Height="35" Width="{Binding Width, RelativeSource={RelativeSource TemplatedParent}}" Source="{Binding ElementName=G0, Path=Source}"/>
+                <local:SideFolderControl Index="1" GalleryNameSide="{Binding ElementName=G1, Path=GalleryName}" Height="35" Width="{Binding Width, RelativeSource={RelativeSource TemplatedParent}}" Source="{Binding ElementName=G1, Path=Source}"/>
+                <local:SideFolderControl Index="2" GalleryNameSide="{Binding ElementName=G2, Path=GalleryName}" Height="35" Width="{Binding Width, RelativeSource={RelativeSource TemplatedParent}}" Source="{Binding ElementName=G2, Path=Source}"/>
+            </StackPanel>
+        </Border>
+        <UniformGrid x:Name="GalleryGrid"
+                     Rows="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight, Converter={StaticResource GetRows}}"
+                     Columns="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth, Converter={StaticResource GetColumns}}">
+            <local:FolderControl Index="0" Size="175" VerticalAlignment="Top" HorizontalAlignment="Left" GalleryName="Flowers" Source="../../Resource files/Flowers.png"></local:FolderControl>
+            <local:FolderControl Index="1" Size="175" VerticalAlignment="Top" HorizontalAlignment="Left" GalleryName="Belka" Source="../../Resource files/Belka.jpg"></local:FolderControl>
+            <local:FolderControl Index="2" Size="175" VerticalAlignment="Top" HorizontalAlignment="Left" GalleryName="People" Source="../../Resource files/Daniil.png"></local:FolderControl>
+        </UniformGrid>
+    </DockPanel>
+</Window>

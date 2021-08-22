@@ -1,0 +1,9 @@
+﻿<Application x:Class="Advanced_Security_system.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Advanced_Security_system.Pin_Window.Frontend"
+             StartupUri="PinWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

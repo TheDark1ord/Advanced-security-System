@@ -1,0 +1,119 @@
+﻿<Window x:Class="Advanced_Security_system.Pin_Window.Frontend.PinWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="Please Type Your Pin" Height="650" Width="450"
+        ResizeMode="NoResize"
+        WindowStyle="ToolWindow"
+        KeyDown="Button_KeyDown"
+        Icon="../../../Resource files/ASS.ico">
+
+    <Window.Resources>
+        <!--Color pallet-->
+        <Color x:Key="FgColor">     #FFFFFF   </Color>
+        <Color x:Key="LightBlue">   #3792EA   </Color>
+        <Color x:Key="DarkerBlue">  #2F7ECA   </Color>
+        <Color x:Key="DarkBlue">    #215689   </Color>
+
+        <Style TargetType="DockPanel">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="{StaticResource LightBlue}"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+         
+        <Style TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="{StaticResource DarkerBlue}" />
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <SolidColorBrush Color="{StaticResource FgColor}" />
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+
+            <Setter Property="FontFamily" Value="Segoe" />
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="FontWeight" Value="Bold" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderThickness="0" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <SolidColorBrush Color="{StaticResource DarkerBlue}" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <SolidColorBrush Color="{StaticResource DarkBlue}" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <DockPanel LastChildFill="True">
+        <Canvas DockPanel.Dock="Top" Height="200">
+            <Canvas x:Name="PinContainer"  Width="220" Height="17" Canvas.Left="115" Canvas.Top="82">
+            </Canvas>
+        </Canvas>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="0.85*" />
+            </Grid.RowDefinitions>
+
+            <Button x:Name="One" Grid.Column="0" Grid.Row="0"  Click="Button_Click">1</Button>
+            <Button x:Name="Two" Grid.Column="1" Grid.Row="0"  Click="Button_Click">2</Button>
+            <Button x:Name="Three" Grid.Column="2" Grid.Row="0"  Click="Button_Click">3</Button>
+
+            <Button x:Name="Four" Grid.Column="0" Grid.Row="1"  Click="Button_Click">4</Button>
+            <Button x:Name="Five" Grid.Column="1" Grid.Row="1"  Click="Button_Click">5</Button>
+            <Button x:Name="Six" Grid.Column="2" Grid.Row="1"  Click="Button_Click">6</Button>
+
+            <Button x:Name="Seven" Grid.Column="0" Grid.Row="2"  Click="Button_Click">7</Button>
+            <Button x:Name="Eight" Grid.Column="1" Grid.Row="2"  Click="Button_Click">8</Button>
+            <Button x:Name="Nine" Grid.Column="2" Grid.Row="2"  Click="Button_Click">9</Button>
+
+            <Button Grid.Column="0" Grid.Row="3"  Click="Button_Click"></Button>
+            <Button x:Name="Zero" Grid.Column="1" Grid.Row="3"  Click="Button_Click">0</Button>
+            <Button x:Name="Backspace" Grid.Column="2" Grid.Row="3"  Click="backspace_click">
+                <Image VerticalAlignment="Center" HorizontalAlignment="Center"
+                       Height="42" Source="/backspace_ico.png"/>
+            </Button>
+        </Grid>
+    </DockPanel>
+</Window>

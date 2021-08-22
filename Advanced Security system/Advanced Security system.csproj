@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <RootNamespace>Advanced_Security_system</RootNamespace>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="General\" />
+    <Folder Include="Main Window\Backend\Headers\" />
+    <Folder Include="Main Window\Backend\Resource files\" />
+    <Folder Include="Main Window\Backend\Source Files\" />
+    <Folder Include="Main Window\Frontend\Custom controls\Images\" />
+    <Folder Include="Pin Window\Backend\Headers\" />
+    <Folder Include="Pin Window\Backend\Resource files\" />
+    <Folder Include="Pin Window\Backend\Source Files\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Main Window\Frontend\Custom controls\Side_Panel_Galleries\SideFolderControl.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="Main Window\Frontend\MainWindowWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Main Window\Frontend\Custom controls\Galleries\FolderControlStyle.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Main Window\Frontend\Custom controls\Side_Panel_Galleries\SideFolderControl.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Main Window\Frontend\MainWindowWindow.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Main Window\Frontend\Styles\MainWindowStyles.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pin Window\Frontend\PinWindow.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+</Project>

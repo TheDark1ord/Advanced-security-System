@@ -1,0 +1,90 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <RootNamespace>Advanced_security_System_C</RootNamespace>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="backspace_ico.png" />
+    <None Remove="Resource files\ASS.ico" />
+    <None Remove="Resource files\ASS.png" />
+    <None Remove="Resource files\Belka.jpg" />
+    <None Remove="Resource files\billy.jpeg" />
+    <None Remove="Resource files\billyS.jpeg" />
+    <None Remove="Resource files\Daniil.png" />
+    <None Remove="Resource files\Flowers.png" />
+    <None Remove="Resource files\gachi.jpg" />
+    <None Remove="Resource files\van.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resource files\ASS.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource files\ASS.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource files\Belka.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource files\billy.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource files\billyS.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource files\Daniil.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource files\Flowers.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource files\gachi.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource files\van.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\C++ DLLs\C++ DLLs.vcxproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="C++ DLLs">
+      <HintPath>..\x64\Release\C++ DLLs.dll</HintPath>
+    </Reference>
+    <Reference Include="CPlus">
+      <HintPath>..\x64\Release\CPlus.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Custom_UIElements\Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="backspace_ico.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Custom_UIElements\Side_Panel_Galleries\SideFolderControl.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="MainWindowWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="MainWindowWindow.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+</Project>

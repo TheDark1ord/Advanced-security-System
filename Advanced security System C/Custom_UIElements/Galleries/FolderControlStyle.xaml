@@ -1,0 +1,95 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Advanced_security_System_C"
+                    x:Class="Advanced_security_System_C.Custom_UIElements.Galleries.FolderControlStyle">
+
+    <local:GetImageSize x:Key="ToImageSize"/>
+    <local:GetLabelSize x:Key="ToLabelSize"/>
+
+    <Style x:Key="InvisibleTextbox" TargetType="{x:Type TextBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                    <Border BorderThickness="0" Background="Transparent">
+                        <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="BorderBrush">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="Transparent"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="FolderControlDefault" TargetType="{x:Type local:FolderControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:FolderControl}">
+                    <Grid>
+                        <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="White">
+                            <Image x:Name="ImageControl"
+                                    Height="{Binding Size, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ToImageSize}}"
+                                    Width="{Binding Size, RelativeSource={RelativeSource TemplatedParent}}"
+                                    Stretch="UniformToFill"
+                                    Source="../../Resource Files/billy.jpeg">
+                            </Image>
+                            <Border Width="{Binding Size, RelativeSource={RelativeSource TemplatedParent}}"
+                                    BorderBrush="Black" BorderThickness="1">
+                                
+                            </Border>
+                            <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                <Label x:Name="LabelControl"
+                                        Height="{Binding Size, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ToLabelSize}}"
+                                        Width="{Binding Size, RelativeSource={RelativeSource TemplatedParent}}"
+                                        Margin="-1" Background="Transparent"
+                                        VerticalAlignment="Center" HorizontalAlignment="Center"
+                                        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                        Content="{Binding GalleryName, RelativeSource={RelativeSource TemplatedParent}}"
+                                        Visibility="Visible">
+                                </Label>
+                                <!-- Text control inherits it's size, position, and text(two-way) from LabelControl-->
+                                <!-- It is shown after double click on label, so user can assign Gallery's name-->
+                                <TextBox x:Name="HiddenTextControl" Style="{StaticResource InvisibleTextbox}"
+                                        Height="{Binding ElementName=LabelControl, Path=Height}"
+                                        Width="{Binding ElementName=LabelControl, Path=Width}"
+                                        Margin="{Binding ElementName=LabelControl, Path=Margin}"
+                                        Background="Transparent" BorderBrush="Transparent"
+                                        VerticalAlignment="Center" HorizontalAlignment="Center"
+                                        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                        Text="{Binding GalleryName, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                        Visibility="Hidden">
+                                </TextBox>
+                            </Grid>
+                        </StackPanel>
+                        <Border VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                x:Name="OuterBorder"
+                                Width="{Binding Size, RelativeSource={RelativeSource TemplatedParent}}"
+                                Height="{Binding Size, RelativeSource={RelativeSource TemplatedParent}}"
+                                BorderThickness="2" BorderBrush="Black"
+                                Margin="0, 0, 0, 0"/>
+                     </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsMouseOver, ElementName=ImageControl}" Value="True">
+                            <Setter TargetName="OuterBorder" Property="BorderBrush">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="Blue"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:FolderControl}" BasedOn="{StaticResource FolderControlDefault}"/>
+
+</ResourceDictionary>
