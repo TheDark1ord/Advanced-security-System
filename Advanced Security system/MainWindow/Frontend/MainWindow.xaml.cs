@@ -9,9 +9,6 @@ using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 
-using Advanced_security_System.Main_Window.Frontend.Custom_Controls.Galleries;
-using Advanced_security_System.Main_Window.Frontend.Custom_Controls.Side_Panel_Galleries;
-
 namespace Advanced_security_System.Main_Window.Frontend
 {
     public class GridCellWidth : IValueConverter
@@ -64,7 +61,7 @@ namespace Advanced_security_System.Main_Window.Frontend
 
         public void show_sidePanel(object sender, RoutedEventArgs e)
         {
-            var selectedIndex = ((sender as Image).TemplatedParent as FolderControl).Index;
+            var selectedIndex = ((sender as Image).TemplatedParent as AlbumControl).Index;
             SelectFolder(selectedIndex);
 
             StackPanel SidePanel = FindName("SidePanel") as StackPanel;
@@ -89,7 +86,7 @@ namespace Advanced_security_System.Main_Window.Frontend
             storyboard.Children.Add(slide_out);
             storyboard.Begin();
 
-            Storyboard.SetTargetProperty(slide_out, new PropertyPath(SideFolderControl.WidthProperty));
+            Storyboard.SetTargetProperty(slide_out, new PropertyPath(SideAlbumControl.WidthProperty));
             foreach (UIElement element in SidePanel.Children)
             {
                 Storyboard.SetTarget(slide_out, element);
@@ -123,7 +120,7 @@ namespace Advanced_security_System.Main_Window.Frontend
             storyboard.Children.Add(slide_out);
             storyboard.Begin();
 
-            Storyboard.SetTargetProperty(slide_out, new PropertyPath(SideFolderControl.WidthProperty));
+            Storyboard.SetTargetProperty(slide_out, new PropertyPath(SideAlbumControl.WidthProperty));
             foreach (UIElement element in SidePanel.Children)
             {
                 Storyboard.SetTarget(slide_out, element);
@@ -156,7 +153,7 @@ namespace Advanced_security_System.Main_Window.Frontend
             var SideFolders = (FindName("SidePanel") as StackPanel).Children;
             foreach (var element in SideFolders)
             {
-                var SideFolder = element as SideFolderControl;
+                var SideFolder = element as SideAlbumControl;
                 if (SideFolder.Index == selectedIndex)
                 {
                     SelectedGallery = SideFolder;
@@ -182,7 +179,7 @@ namespace Advanced_security_System.Main_Window.Frontend
 
             foreach (UIElement element in grid.Children)
             {
-                FolderControl folderControl = element as FolderControl;
+                AlbumControl folderControl = element as AlbumControl;
                 if ((folderControl.Template.FindName("LabelControl", folderControl) as Label).IsMouseOver)
                 {
                     dragged_element = folderControl;
@@ -208,9 +205,9 @@ namespace Advanced_security_System.Main_Window.Frontend
         }
 
         private bool mouse_hold = false;
-        private FolderControl dragged_element = null;
+        private AlbumControl dragged_element = null;
 
-        private SideFolderControl SelectedGallery = null;
+        private SideAlbumControl SelectedGallery = null;
 
         private const float side_panel_anim_dur = 0.15f;
         private double side_panel_width;

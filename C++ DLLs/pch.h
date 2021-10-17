@@ -4,6 +4,12 @@
 // However, files listed here are ALL re-compiled if any one of them is updated between builds.
 // Do not add files here that you will be updating frequently as this negates the performance advantage.
 
+#ifdef CDLLS_EXPORTS
+	#define DLL_API __declspec(dllexport)
+#else
+	#define DLL_API __declspec(dllimport)
+#endif
+
 #ifndef PCH_H
 #define PCH_H
 
@@ -11,5 +17,8 @@
 #include "framework.h"
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <exception>
+#include <valarray>
 
 #endif //PCH_H

@@ -20,12 +20,18 @@ namespace Advanced_security_System_C
     {
 
         [DllImport("CPlus.dll")]
-        static extern bool validate_pin(string pin);
+        private static extern bool validate_pin(string pin);
+
+
+        [DllImport("CPlus.dll")]
+        private static extern bool LoadGalleryFile(string fileName);
 
         public MainWindow()
         {
             NameScope.SetNameScope(this, null);
             InitializeComponent();
+
+            //LoadGalleryFile("C:\\Users\\rubco\\source\\repos\\Advanced security System C\\C++ DLLs\\Data\\TestFile.gd");
 
             animationQueue = new Queue<Tuple<PointAnimation, bool>>();
         }
@@ -64,14 +70,12 @@ namespace Advanced_security_System_C
             }
             else
             {
-
                 EllipseGeometry new_ellipse = new EllipseGeometry();
                 new_ellipse.Center = new Point(PinContainer.Width / 2 + pins_right_border, PinContainer.Height / 2);
                 new_ellipse.RadiusY = PinContainer.Height / 2;
                 new_ellipse.RadiusX = new_ellipse.RadiusY;
 
                 pins_right_border += PinContainer.Height / 2 + pins_spacing / 2;
-
 
                 this.RegisterName("E" + typed_pin.Length.ToString(), new_ellipse);
 
@@ -84,6 +88,7 @@ namespace Advanced_security_System_C
                 anim_size_y.From = 0;
                 anim_size_y.To = new_ellipse.RadiusY;
                 anim_size_y.Duration = TimeSpan.FromSeconds(anim_duration);
+
                 Storyboard.SetTargetName(anim_size_x, "E" + typed_pin.Length.ToString());
                 Storyboard.SetTargetName(anim_size_y, "E" + typed_pin.Length.ToString());
                 Storyboard.SetTargetProperty(anim_size_x, new PropertyPath(EllipseGeometry.RadiusXProperty));

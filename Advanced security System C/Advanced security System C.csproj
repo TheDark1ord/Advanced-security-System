@@ -5,6 +5,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <RootNamespace>Advanced_security_System_C</RootNamespace>
     <UseWPF>true</UseWPF>
+    <StartupObject>Advanced_security_System_C.App</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -55,9 +56,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="C++ DLLs">
-      <HintPath>..\x64\Release\C++ DLLs.dll</HintPath>
-    </Reference>
     <Reference Include="CPlus">
       <HintPath>..\x64\Release\CPlus.dll</HintPath>
     </Reference>

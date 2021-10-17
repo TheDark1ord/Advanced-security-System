@@ -5,6 +5,8 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <RootNamespace>Advanced_Security_system</RootNamespace>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon />
+    <StartupObject />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -17,40 +19,49 @@
 
   <ItemGroup>
     <Folder Include="General\" />
-    <Folder Include="Main Window\Backend\Headers\" />
-    <Folder Include="Main Window\Backend\Resource files\" />
-    <Folder Include="Main Window\Backend\Source Files\" />
-    <Folder Include="Main Window\Frontend\Custom controls\Images\" />
-    <Folder Include="Pin Window\Backend\Headers\" />
-    <Folder Include="Pin Window\Backend\Resource files\" />
-    <Folder Include="Pin Window\Backend\Source Files\" />
+    <Folder Include="MainWindow\Frontend\Custom_Controls\Images\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Main Window\Frontend\Custom controls\Side_Panel_Galleries\SideFolderControl.cs">
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\C++ DLLs\C++ DLLs.vcxproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="CPlus">
+      <HintPath>..\x64\Release\CPlus.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="MainWindow\Frontend\Custom_Controls\Side_Panel_Albums\SideAlbumControl.cs">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Compile>
-    <Compile Update="Main Window\Frontend\MainWindowWindow.xaml.cs">
+    <Compile Update="MainWindow\Frontend\MainWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Main Window\Frontend\Custom controls\Galleries\FolderControlStyle.xaml">
+    <Page Update="MainWindow\Frontend\Custom_Controls\Albums\AlbumControlStyle.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="Main Window\Frontend\Custom controls\Side_Panel_Galleries\SideFolderControl.xaml">
+    <Page Update="MainWindow\Frontend\Custom_Controls\Side_Panel_Albums\SideAlbumControl.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="Main Window\Frontend\MainWindowWindow.xaml">
+    <Page Update="MainWindow\Frontend\MainWindow.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Main Window\Frontend\Styles\MainWindowStyles.xaml">
+    <Page Update="MainWindow\Frontend\Styles\MainWindowStyles.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

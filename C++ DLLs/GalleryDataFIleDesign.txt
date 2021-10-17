@@ -1,0 +1,33 @@
+FileName.gd
+
+**8 bit integer
+//Number of gallery dedscriptions contained in this file
+
+///////////////////////// Gallery description ////////////////////////////////
+
+**8 bit integer
+//Index of the Gallery
+Used to determine the position of a gallery in main window
+
+**16 bit integer
+//Number of images in the gallery
+
+**8 bit chars(3  units)
+ //Gallery prefix
+ Prefix at the start of each image file contained in this gallery
+ Prefix consists of 3 english letters which is enough to encode 17,000
+ different galleries
+
+**Null terminated string
+//Thumbnail file name
+Name of the image file, containing the thumbnail for this gallery
+If empty default thumbnail will be loaded
+
+///////////////////////// Gallery description ////////////////////////////////
+
+///////////////////////////// Separator /////////////////////////////////////
+Separator consists of 8 zeros it used to
+quickly separate and find different galleries
+
+File does not have a separator at the end
+///////////////////////////// Separator /////////////////////////////////////

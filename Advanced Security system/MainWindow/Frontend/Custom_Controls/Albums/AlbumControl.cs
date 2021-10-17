@@ -7,9 +7,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Input;
 
-using Advanced_security_System.Main_Window.Frontend.Custom_Controls.Side_Panel_Galleries;
 
-namespace Advanced_security_System.Main_Window.Frontend.Custom_Controls.Galleries
+namespace Advanced_security_System.Main_Window.Frontend
 {
 
     public class GetImageSize : IValueConverter
@@ -43,10 +42,10 @@ namespace Advanced_security_System.Main_Window.Frontend.Custom_Controls.Gallerie
         }
     }
 
-    class FolderControl : Control
+    class AlbumControl : Control
     {
         public static readonly DependencyProperty IndexProperty =
-        DependencyProperty.Register(nameof(Index), typeof(int), typeof(FolderControl),
+        DependencyProperty.Register(nameof(Index), typeof(int), typeof(AlbumControl),
         new PropertyMetadata(default(int)));
         public int Index
         {
@@ -54,7 +53,7 @@ namespace Advanced_security_System.Main_Window.Frontend.Custom_Controls.Gallerie
             set { SetValue(IndexProperty, value); }
         }
         public static readonly DependencyProperty SizeProperty =
-            DependencyProperty.Register(nameof(Size), typeof(int), typeof(FolderControl),
+            DependencyProperty.Register(nameof(Size), typeof(int), typeof(AlbumControl),
                 new PropertyMetadata(default(int)));
         public int Size
         {
@@ -63,7 +62,7 @@ namespace Advanced_security_System.Main_Window.Frontend.Custom_Controls.Gallerie
         }
 
         public static readonly DependencyProperty GalleryNameProperty =
-            DependencyProperty.Register(nameof(GalleryName), typeof(string), typeof(SideFolderControl),
+            DependencyProperty.Register(nameof(GalleryName), typeof(string), typeof(SideAlbumControl),
                 new FrameworkPropertyMetadata("Hello world!"));
 
         public string GalleryName
@@ -82,12 +81,12 @@ namespace Advanced_security_System.Main_Window.Frontend.Custom_Controls.Gallerie
 
             // Find linked side folder control
             MainAppWindow window = Window.GetWindow(this) as MainAppWindow;
-            SideFolderControl sideFolderControl = window.FindName("SG" + Index.ToString()) as SideFolderControl;
+            SideAlbumControl sideFolderControl = window.FindName("SG" + Index.ToString()) as SideAlbumControl;
             sideFolderControl.GalleryNameSide = GalleryName.ToString();
         }
 
         public static readonly DependencyProperty SourceProperty =
-            DependencyProperty.Register(nameof(Source), typeof(string), typeof(FolderControl),
+            DependencyProperty.Register(nameof(Source), typeof(string), typeof(AlbumControl),
                 new FrameworkPropertyMetadata("../../Resource files/billy.jpeg"));
 
         public string Source
@@ -96,11 +95,11 @@ namespace Advanced_security_System.Main_Window.Frontend.Custom_Controls.Gallerie
             set { SetValue(SourceProperty, value); }
         }
 
-        public FolderControl()
+        public AlbumControl()
         {
             this.Loaded += OnLoaded;
         }
-        public FolderControl(FolderControl copy)
+        public AlbumControl(AlbumControl copy)
         {
             Index = copy.Index;
             GalleryName = copy.GalleryName;
@@ -108,9 +107,9 @@ namespace Advanced_security_System.Main_Window.Frontend.Custom_Controls.Gallerie
             Source = copy.Source;
         }
 
-        public FolderControl GetCopy()
+        public AlbumControl GetCopy()
         {
-            return new FolderControl(this);
+            return new AlbumControl(this);
         }
         private void OnLoaded(object sender, RoutedEventArgs e)
         {

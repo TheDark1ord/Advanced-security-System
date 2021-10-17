@@ -27,6 +27,9 @@
     <ClInclude Include="FIleManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GalleryData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -38,5 +41,13 @@
     <ClCompile Include="PinValidation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GalleryData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="GalleryDataFIleDesign.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

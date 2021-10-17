@@ -8,8 +8,7 @@
         Title="Please Type Your Pin" Height="650" Width="450"
         ResizeMode="NoResize"
         WindowStyle="ToolWindow"
-        KeyDown="Button_KeyDown"
-        Icon="../../../Resource files/ASS.ico">
+        KeyDown="Button_KeyDown">
 
     <Window.Resources>
         <!--Color pallet-->
@@ -29,7 +28,7 @@
         <Style TargetType="Button">
             <Setter Property="Background">
                 <Setter.Value>
-                    <SolidColorBrush Color="{StaticResource DarkerBlue}" />
+                    <SolidColorBrush Color="{StaticResource LightBlue}" />
                 </Setter.Value>
             </Setter>
 

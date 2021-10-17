@@ -1,5 +1,4 @@
-﻿using Advanced_security_System.Main_Window.Frontend.Custom_Controls.Galleries;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
@@ -7,7 +6,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
-namespace Advanced_security_System.Main_Window.Frontend.Custom_Controls.Side_Panel_Galleries
+namespace Advanced_security_System.Main_Window.Frontend
 {
     public class MultiValueEqualityConverter : IMultiValueConverter
     {
@@ -36,10 +35,10 @@ namespace Advanced_security_System.Main_Window.Frontend.Custom_Controls.Side_Pan
             throw new NotImplementedException();
         }
     }
-    public class SideFolderControl : Control
+    public class SideAlbumControl : Control
     {
         public static readonly DependencyProperty IndexProperty =
-        DependencyProperty.Register(nameof(Index), typeof(int), typeof(SideFolderControl),
+        DependencyProperty.Register(nameof(Index), typeof(int), typeof(SideAlbumControl),
         new PropertyMetadata(default(int)));
         public int Index
         {
@@ -48,12 +47,12 @@ namespace Advanced_security_System.Main_Window.Frontend.Custom_Controls.Side_Pan
         }
 
         public static readonly DependencyProperty GalleryNameSideProperty =
-            DependencyProperty.Register(nameof(GalleryNameSide), typeof(string), typeof(SideFolderControl),
+            DependencyProperty.Register(nameof(GalleryNameSide), typeof(string), typeof(SideAlbumControl),
                 new PropertyMetadata(default(string), new PropertyChangedCallback(OnPropertyChanged)));
 
         private static void OnPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            FolderControl parent = obj as FolderControl;
+            AlbumControl parent = obj as AlbumControl;
             if (parent is null)
                 return;
             ControlTemplate template = parent.Template;
@@ -76,7 +75,7 @@ namespace Advanced_security_System.Main_Window.Frontend.Custom_Controls.Side_Pan
         }
 
         public static readonly DependencyProperty SourceProperty =
-            DependencyProperty.Register(nameof(Source), typeof(string), typeof(SideFolderControl),
+            DependencyProperty.Register(nameof(Source), typeof(string), typeof(SideAlbumControl),
                 new FrameworkPropertyMetadata("../../Resource files/billy.jpeg"));
 
         public string Source
@@ -84,7 +83,7 @@ namespace Advanced_security_System.Main_Window.Frontend.Custom_Controls.Side_Pan
             get { return (string)GetValue(SourceProperty); }
             set { SetValue(SourceProperty, value); }
         }
-        public SideFolderControl()
+        public SideAlbumControl()
         {
             this.Loaded += OnLoadded;
         }
